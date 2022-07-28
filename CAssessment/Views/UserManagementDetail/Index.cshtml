@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CAUtilityLayout.cshtml";
+}
+
+<h1>Home Page</h1>
+
+<h3>@ViewBag.Info</h3>
+<h3>@TempData["Status"]</h3>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

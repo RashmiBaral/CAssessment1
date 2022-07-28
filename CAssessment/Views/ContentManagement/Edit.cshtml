@@ -1,0 +1,68 @@
+﻿@model ModelsAndUtility.Model.CaseStudyDetails
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_CAUtilityLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>CaseStudyDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="CSID" class="control-label" hidden></label>
+                <input asp-for="CSID" class="form-control" hidden/>
+                <span asp-validation-for="CSID" class="text-danger hide "></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CaseStudy" class="control-label"></label>
+                <input asp-for="CaseStudy" class="form-control" />
+                <span asp-validation-for="CaseStudy" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div>
+                <table>
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <tr>
+                            <td class="form-group">
+                                <label asp-for="@Model.CaseStudySolution[i].CSSID">Solution @i:</label>
+                            </td>
+                            <td>
+                                @Html.TextAreaFor(m => m.CaseStudySolution[i].Solution, new { @class = "form-control" })
+                                @*<input  type =  asp-for="@Model.CaseStudySolution[i].Solution" class="form-control" />*@
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.CaseStudySolution[i].CompetencyID, new SelectList(Model.Competencies, "CompId", "Compname"))
+                                @*<select asp-items="@(new SelectList(Model.Competencies,"CompId","Compname"))"></select>*@
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="submit" action="Edit" value="Save" name="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

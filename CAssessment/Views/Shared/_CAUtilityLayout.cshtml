@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td style="vertical-align:top">
+                    <div style="border-color:lightgray;border-width:1px;width:210px; text-align:center">
+                        @Html.ActionLink("Logout", "LoginUser", "UserManagementDetail")
+                        <br /><br />
+                        @Html.ActionLink("Home", "Index", "UserManagementDetail")
+                        <br /><br />
+                        @Html.ActionLink("Register User", "RegisterUser", "UserManagementDetail")
+                        <br /><br />
+                        @Html.ActionLink("Role Creation", "CreateRole", "UserManagementDetail")
+                        <br /><br />
+                        @Html.ActionLink("Registered List", "RegisteredUsersList", "UserManagementDetail")
+                        <br /><br />
+                        @Html.ActionLink("Edit Users", "EditUser", "UserManagementDetail")
+                        <br /><br />
+                        @Html.ActionLink("Add Case Study", "Create", "ContentManagement")
+                        <br /><br />
+                        @Html.ActionLink("Case Study List", "Details", "ContentManagement")
+                        <br /><br />
+                        @Html.ActionLink("Add Assessment Detail", "Create", "AssessmentDetails")
+                        <br /><br />
+                        @Html.ActionLink("Map Assessment and Users", "AssessmentUserMap", "AssessmentDetails")
+                        <br /><br />
+                        @Html.ActionLink("Map Assessment and Case Study", "AssessmentCaseStudyMap", "AssessmentDetails")
+                        <br /><br />
+                    </div>
+                </td>
+                <td style="vertical-align:top">
+                    <div>
+                        @RenderBody()
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts")
+</body>
+
+</html>
+
+

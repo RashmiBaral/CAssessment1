@@ -1,0 +1,52 @@
+﻿@model ModelsAndUtility.Model.AssessmentCaseStudyMappingVM
+
+@{
+    ViewData["Title"] = "AssessmentCaseStudyMap";
+    Layout = "~/Views/Shared/_CAUtilityLayout.cshtml";
+}
+
+<h1>AssessmentCaseStudyMap</h1>
+
+<h4>AssessmentCaseStudyMappingVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AssessmentCaseStudyMap">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+            <div class="form-group">
+                <label asp-for="AssessmentID" class="control-label"></label>
+
+                <select asp-for="AssessmentID" asp-items="@(new SelectList(Model.AssessmentInfo,"AssessmentID","AssessmentName"))"></select>
+                <span asp-validation-for="AssessmentID" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+
+                @for (var i = 0; i < Model.CaseStudyInfo.Count; i++)
+                {
+                    <label>@(i+1)</label>
+                    <input type="checkbox" asp-for="@Model.CaseStudyInfo[i].Selected" />
+                    <label asp-for="@Model.CaseStudyInfo[i].CSID">@Model.CaseStudyInfo[i].CSID - @Model.CaseStudyInfo[i].CaseStudy</label>
+                    <input type="hidden" asp-for="@Model.CaseStudyInfo[i].CaseStudy" />
+                    <input type="hidden" asp-for="@Model.CaseStudyInfo[i].CSID" />
+                    <br />
+                }
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

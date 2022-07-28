@@ -1,0 +1,54 @@
+﻿@model ModelsAndUtility.Model.AssessmentDetails
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_CAUtilityLayout.cshtml";
+}
+
+<h1>Create Assessment</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="AssessmentID" class="control-label"></label>
+                <input asp-for="AssessmentID" class="form-control hidden" />
+                <span asp-validation-for="AssessmentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssessmentName" class="control-label"></label>
+                <input asp-for="AssessmentName" class="form-control" />
+                <span asp-validation-for="AssessmentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssmtDate" class="control-label"></label>
+                <input asp-for="AssmtDate" class="form-control" />
+                <span asp-validation-for="AssmtDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
